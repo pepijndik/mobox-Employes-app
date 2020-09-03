@@ -8,6 +8,8 @@ target 'mobox_employes' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
   target 'mobox_employesTests' do
     inherit! :complete
     # Pods for testing
