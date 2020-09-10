@@ -35,7 +35,7 @@ const HomeScreen = ({navigation}) => {
         <View style={styles.tabs}>
           <Image
             style={styles.img}
-            source={require('../../assets/planning_icon.png')}></Image>
+            source={require('../../assets/box.png')}></Image>
           <Text style={{marginLeft: 40, fontWeight: 'bold'}}>Boxen</Text>
         </View>
       </View>

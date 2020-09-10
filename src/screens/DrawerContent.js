@@ -76,7 +76,7 @@ export function DrawerContent(props) {
               icon={({color, size}) => (
                 <Icon name="home-outline" color={color} size={size} />
               )}
-              label="Home"
+              label="Dashboard"
               onPress={() => {
                 props.navigation.navigate('Home');
               }}
@@ -92,29 +92,20 @@ export function DrawerContent(props) {
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="bookmark-outline" color={color} size={size} />
+                <Icon name="view-agenda" color={color} size={size} />
               )}
-              label="Bookmarks"
+              label="Planning"
               onPress={() => {
                 props.navigation.navigate('BookmarkScreen');
               }}
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="settings-outline" color={color} size={size} />
+                <Icon name="account-settings" color={color} size={size} />
               )}
               label="Settings"
               onPress={() => {
                 props.navigation.navigate('SettingsScreen');
-              }}
-            />
-            <DrawerItem
-              icon={({color, size}) => (
-                <Icon name="account-check-outline" color={color} size={size} />
-              )}
-              label="Support"
-              onPress={() => {
-                props.navigation.navigate('SupportScreen');
               }}
             />
           </Drawer.Section>
@@ -124,7 +115,7 @@ export function DrawerContent(props) {
                 toggleTheme();
               }}>
               <View style={styles.preference}>
-                <Text>Dark Theme</Text>
+                <Text>Dark Thema</Text>
                 <View pointerEvents="none">
                   <Switch value={paperTheme.dark} />
                 </View>
