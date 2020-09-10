@@ -22,7 +22,7 @@ const MainTabScreen = () => (
       component={HomeStackScreen}
       options={{
         tabBarLabel: 'Dashboard',
-        tabBarColor: '#F53D3D',
+        tabBarColor: '#E7EEF0',
         tabBarIcon: ({color}) => (
           <Icon name="ios-home" color={color} size={26} />
         ),
@@ -33,7 +33,7 @@ const MainTabScreen = () => (
       component={DetailsStackScreen}
       options={{
         tabBarLabel: 'Planning',
-        tabBarColor: '#F53D3D',
+        tabBarColor: '#E7EEF0',
         tabBarIcon: ({color}) => (
           <Icon name="ios-notifications" color={color} size={26} />
         ),
@@ -63,7 +63,7 @@ const HomeStackScreen = ({navigation}) => (
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
-        fontFamily: 'Poppins',
+        fontFamily: 'Poppins-ExtraBold',
         fontWeight: 'bold',
       },
     }}>

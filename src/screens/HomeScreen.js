@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 35,
     fontWeight: 'bold',
-    fontFamily: 'Poppins',
+    fontFamily: 'Poppins-ExtraBold',
   },
   grid: {
     display: 'flex',
