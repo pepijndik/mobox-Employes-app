@@ -17,7 +17,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.main}>
       <View style={styles.head}>
-        <Text style={styles.head_text}>Mobox</Text>
+        <Text style={styles.head_text}>MOBOX</Text>
 
         <StatusBar
           backgroundColor="#F53D3D"

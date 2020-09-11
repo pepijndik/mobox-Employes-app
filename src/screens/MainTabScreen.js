@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './HomeScreen';
 import DetailsScreen from './DetailsScreen';
 import ExploreScreen from './ExploreScreen';
+import Planning from './Planning';
 import ProfileScreen from './ProfileScreen';
 
 const HomeStack = createStackNavigator();
@@ -22,18 +23,18 @@ const MainTabScreen = () => (
       component={HomeStackScreen}
       options={{
         tabBarLabel: 'Dashboard',
-        tabBarColor: '#E7EEF0',
+        tabBarColor: '#F53D3D',
         tabBarIcon: ({color}) => (
           <Icon name="ios-home" color={color} size={26} />
         ),
       }}
     />
     <Tab.Screen
-      name="Notifications"
-      component={DetailsStackScreen}
+      name="Planning"
+      component={PlanningStackSreen}
       options={{
         tabBarLabel: 'Planning',
-        tabBarColor: '#E7EEF0',
+        tabBarColor: '#1f65ff',
         tabBarIcon: ({color}) => (
           <Icon name="ios-notifications" color={color} size={26} />
         ),
@@ -43,7 +44,7 @@ const MainTabScreen = () => (
       name="Profile"
       component={ProfileScreen}
       options={{
-        tabBarLabel: 'Boxen',
+        tabBarLabel: 'Klanten',
         tabBarColor: '#F53D3D',
         tabBarIcon: ({color}) => (
           <Icon name="ios-person" color={color} size={26} />
@@ -84,7 +85,7 @@ const HomeStackScreen = ({navigation}) => (
   </HomeStack.Navigator>
 );
 
-const DetailsStackScreen = ({navigation}) => (
+const PlanningStackSreen = ({navigation}) => (
   <DetailsStack.Navigator
     screenOptions={{
       headerStyle: {
@@ -96,8 +97,8 @@ const DetailsStackScreen = ({navigation}) => (
       },
     }}>
     <DetailsStack.Screen
-      name="Details"
-      component={DetailsScreen}
+      name="Planning"
+      component={Planning}
       options={{
         headerLeft: () => (
           <Icon.Button

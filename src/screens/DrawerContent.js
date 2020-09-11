@@ -85,7 +85,7 @@ export function DrawerContent(props) {
               icon={({color, size}) => (
                 <Icon name="account-outline" color={color} size={size} />
               )}
-              label="Profile"
+              label="Mijn Profiel"
               onPress={() => {
                 props.navigation.navigate('Profile');
               }}
@@ -96,7 +96,7 @@ export function DrawerContent(props) {
               )}
               label="Planning"
               onPress={() => {
-                props.navigation.navigate('BookmarkScreen');
+                props.navigation.navigate('Planning');
               }}
             />
             <DrawerItem
@@ -109,13 +109,13 @@ export function DrawerContent(props) {
               }}
             />
           </Drawer.Section>
-          <Drawer.Section title="Preferences">
+          <Drawer.Section title="App voorkeuren">
             <TouchableRipple
               onPress={() => {
                 toggleTheme();
               }}>
               <View style={styles.preference}>
-                <Text>Dark Thema</Text>
+                <Text>Donker Thema</Text>
                 <View pointerEvents="none">
                   <Switch value={paperTheme.dark} />
                 </View>
@@ -129,7 +129,7 @@ export function DrawerContent(props) {
           icon={({color, size}) => (
             <Icon name="exit-to-app" color={color} size={size} />
           )}
-          label="Sign Out"
+          label="Log uit"
           onPress={() => {
             signOut();
           }}
