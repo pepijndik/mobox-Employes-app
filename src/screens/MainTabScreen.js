@@ -6,8 +6,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from './HomeScreen';
-import DetailsScreen from './DetailsScreen';
-import ExploreScreen from './ExploreScreen';
 import Planning from './Planning';
 import ProfileScreen from './ProfileScreen';
 
@@ -17,13 +15,15 @@ const DetailsStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
-  <Tab.Navigator initialRouteName="Home" activeColor="#fff">
+  <Tab.Navigator
+    initialRouteName="Home"
+    activeColor="#fff"
+    barStyle={{backgroundColor: '#F53D3D'}}>
     <Tab.Screen
       name="Home"
       component={HomeStackScreen}
       options={{
         tabBarLabel: 'Dashboard',
-        tabBarColor: '#F53D3D',
         tabBarIcon: ({color}) => (
           <Icon name="ios-home" color={color} size={26} />
         ),
@@ -34,7 +34,6 @@ const MainTabScreen = () => (
       component={PlanningStackSreen}
       options={{
         tabBarLabel: 'Planning',
-        tabBarColor: '#1f65ff',
         tabBarIcon: ({color}) => (
           <Icon name="ios-notifications" color={color} size={26} />
         ),
@@ -45,7 +44,6 @@ const MainTabScreen = () => (
       component={ProfileScreen}
       options={{
         tabBarLabel: 'Klanten',
-        tabBarColor: '#F53D3D',
         tabBarIcon: ({color}) => (
           <Icon name="ios-person" color={color} size={26} />
         ),
@@ -65,7 +63,6 @@ const HomeStackScreen = ({navigation}) => (
       headerTintColor: '#fff',
       headerTitleStyle: {
         fontFamily: 'Poppins-ExtraBold',
-        fontWeight: 'bold',
       },
     }}>
     <HomeStack.Screen
@@ -89,11 +86,11 @@ const PlanningStackSreen = ({navigation}) => (
   <DetailsStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#1f65ff',
+        backgroundColor: '#F53D3D',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
-        fontWeight: 'bold',
+        fontFamily: 'Poppins-ExtraBold',
       },
     }}>
     <DetailsStack.Screen
@@ -104,7 +101,7 @@ const PlanningStackSreen = ({navigation}) => (
           <Icon.Button
             name="ios-menu"
             size={25}
-            backgroundColor="#1f65ff"
+            backgroundColor="#F53D3D"
             onPress={() => navigation.openDrawer()}></Icon.Button>
         ),
       }}

@@ -17,9 +17,10 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {AuthContext} from '../components/context';
 import AsyncStorage from '@react-native-community/async-storage';
+
 var user_img,
   url,
-  username = 'd';
+  username = 'NOT logged in';
 var user_id,
   user_rank = 0;
 
@@ -40,10 +41,9 @@ const _retrieveData = async () => {
 
 export function DrawerContent(props) {
   const paperTheme = useTheme();
-
   const {signOut, toggleTheme} = React.useContext(AuthContext);
-  //Get data
   _retrieveData();
+
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView {...props}>

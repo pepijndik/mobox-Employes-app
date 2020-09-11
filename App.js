@@ -56,6 +56,12 @@ const App = () => {
       background: '#E7EEF0',
       text: '#333333',
     },
+    mobox: {
+      ...NavigationDefaultTheme.colors,
+      ...PaperDefaultTheme.colors,
+      background: '#E7EEF0',
+      text: '#333333',
+    },
   };
 
   const CustomDarkTheme = {
@@ -65,6 +71,12 @@ const App = () => {
       ...NavigationDarkTheme.colors,
       ...PaperDarkTheme.colors,
       background: '#333333',
+      text: '#ffffff',
+    },
+    mobox: {
+      ...NavigationDefaultTheme.colors,
+      ...PaperDefaultTheme.colors,
+      background: '#000000',
       text: '#ffffff',
     },
   };
