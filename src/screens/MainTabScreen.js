@@ -8,10 +8,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './HomeScreen';
 import Planning from './Planning';
 import ProfileScreen from './ProfileScreen';
-
+import event from '../components/event';
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
-
+const EventStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
@@ -40,8 +40,8 @@ const MainTabScreen = () => (
       }}
     />
     <Tab.Screen
-      name="Profile"
-      component={ProfileScreen}
+      name="Event"
+      component={EventStackSreen}
       options={{
         tabBarLabel: 'Klanten',
         tabBarIcon: ({color}) => (
@@ -107,4 +107,30 @@ const PlanningStackSreen = ({navigation}) => (
       }}
     />
   </DetailsStack.Navigator>
+);
+const EventStackSreen = ({navigation}) => (
+  <EventStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#F53D3D',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontFamily: 'Poppins-ExtraBold',
+      },
+    }}>
+    <EventStack.Screen
+      name="Event"
+      component={event}
+      options={{
+        headerLeft: () => (
+          <Icon.Button
+            name="ios-menu"
+            size={25}
+            backgroundColor="#F53D3D"
+            onPress={() => navigation.openDrawer()}></Icon.Button>
+        ),
+      }}
+    />
+  </EventStack.Navigator>
 );

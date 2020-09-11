@@ -2,26 +2,96 @@ import React from 'react';
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
 
 const event = (props) => {
-  console.log(props);
   return (
     <View style={styles.event_container}>
-      <Text style={styles.event_text}>{props.start} </Text>
-      <Text style={styles.event_text}>{props.end} </Text>
+      <View style={styles.time}>
+        <Text>14:00</Text>
+        <Text style={styles.time_devider}> - </Text>
+        <Text style={{top: -16}}>15:00</Text>
+      </View>
+      <View style={styles.info}>
+        <View style={styles.detials}>
+          <Text style={styles.detials_left}>Plaatsnaam: </Text>
+        </View>
+        <View style={styles.detials}>
+          <Text style={styles.detials_left}>Klant: </Text>
+        </View>
+        <View style={styles.detials}>
+          <Text style={styles.detials_left}>Box(en) : </Text>
+        </View>
+      </View>
+
+      <View style={styles.data}>
+        <View style={styles.detials}>
+          <Text
+            style={{
+              top: '2%',
+              fontSize: 14,
+              fontFamily: 'Poppins-Bold',
+              color: '#F53D3D',
+            }}>
+            {props.title}
+          </Text>
+        </View>
+        <View style={styles.detials}>
+          <Text style={{fontSize: 12, top: '-4%'}}>{props.klantnaam}</Text>
+        </View>
+        <View style={styles.detials}>
+          <Text style={{fontSize: 12, top: '-4%'}}>{props.boxen}</Text>
+        </View>
+      </View>
     </View>
   );
 };
 const {height} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   event_container: {
+    flexDirection: 'row',
     width: height,
     backgroundColor: '#FFFFFF',
-    height: 52,
+    height: 75,
     marginRight: 5,
+    marginBottom: 10,
+    bottom: '2%',
   },
+
   event_text: {
     padding: 20,
     marginVertical: 50,
     textAlign: 'center',
+  },
+  time_devider: {
+    top: -8,
+    left: 15,
+  },
+
+  time: {
+    fontFamily: 'Poppins-Bold',
+    fontSize: 18,
+    color: '#9B9A9A',
+    marginLeft: 20,
+    marginTop: '2%',
+    width: 40,
+    height: 50,
+  },
+  info: {
+    left: 10,
+    top: '2%',
+  },
+  data: {
+    top: '1.4%',
+    left: '14%',
+  },
+  detials: {
+    flexDirection: 'row',
+    color: '#9B9A9A',
+  },
+  detials_left: {
+    fontSize: 10,
+    color: '#9B9A9A',
+  },
+  detials_right: {
+    top: 0,
   },
 });
 export default event;
