@@ -10,27 +10,16 @@ import {
   FlatList,
 } from 'react-native';
 import {useTheme} from '@react-navigation/native';
-import Events from '../components/event';
-import EventsData from '../../model/event';
+import Planning_list from '../components/planning_list';
+import {GetUserData} from '../components/Data';
+
 const Planning = ({navigation}) => {
-  const renderItem = ({item}) => (
-    <Events
-      start={item.start}
-      end={item.end}
-      title={item.title}
-      klant={item.klant}
-      boxen={item.boxen}
-      boxnmr={item.boxnmr}
-    />
-  );
   return (
     <View>
       <Text>Planning</Text>
-      <FlatList
-        keyExtractor={(item) => item.id.toString()}
-        data={EventsData}
-        renderItem={renderItem}
-      />
+      <View style={{height: 300, top: 10}}>
+        <Planning_list actie="get_planning.php" user_id="7" />
+      </View>
     </View>
   );
 };

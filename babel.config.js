@@ -1,6 +1,6 @@
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
 };
-module.exports = {
-  assets: ['./assets/fonts'],
-};
+// module.exports = {
+//   assets: ['./assets/fonts'],
+// };

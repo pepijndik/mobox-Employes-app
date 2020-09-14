@@ -187,7 +187,7 @@ const App = () => {
     <PaperProvider theme={theme}>
       <AuthContext.Provider value={authContext}>
         <NavigationContainer theme={theme}>
-          {loginState.user_id !== null ? (
+          {loginState.user_id !== null || loginState.isLoading ? (
             <Drawer.Navigator
               drawerContent={(props) => <DrawerContent {...props} />}>
               <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />

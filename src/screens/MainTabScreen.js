@@ -7,7 +7,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from './HomeScreen';
 import Planning from './Planning';
-import ProfileScreen from './ProfileScreen';
 import event from '../components/event';
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();

@@ -2,12 +2,30 @@ import React from 'react';
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
 
 const event = (props) => {
+  let boxen = '';
+  if (props.aantal_14 >= 1 && props.aantal_8 >= 1) {
+    boxen = props.aantal_14 + ' x 14kuub, ' + props.aantal_8 + 'x 8kuub';
+  } else if (props.aantal_14 >= 1) {
+    boxen = props.aantal_14 + ' x 14kuub, ';
+  } else if (props.aantal_8 >= 1) {
+    boxen = props.aantal_8 + ' x 8kuub, ';
+  } else {
+    boxen = '';
+  }
+  let start_time = props.start.split(' ');
+  start_time = start_time[1].toString();
+  let time = start_time.split(':');
+  let end = props.end.split(' ');
+  end = end[1].toString();
+  end = end.split(':');
   return (
     <View style={styles.event_container}>
       <View style={styles.time}>
-        <Text>14:00</Text>
+        <Text>{time[0].toString() + ':' + time[1].toString()}</Text>
         <Text style={styles.time_devider}> - </Text>
-        <Text style={{top: -16}}>15:00</Text>
+        <Text style={{top: -16}}>
+          {end[0].toString() + ':' + end[1].toString()}
+        </Text>
       </View>
       <View style={styles.info}>
         <View style={styles.detials}>
@@ -37,7 +55,7 @@ const event = (props) => {
           <Text style={{fontSize: 12, top: '-4%'}}>{props.klantnaam}</Text>
         </View>
         <View style={styles.detials}>
-          <Text style={{fontSize: 12, top: '-4%'}}>{props.boxen}</Text>
+          <Text style={{fontSize: 12, top: '-4%'}}>{boxen}</Text>
         </View>
       </View>
     </View>

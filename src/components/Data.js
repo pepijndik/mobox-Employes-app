@@ -13,23 +13,3 @@ export function GetUserData() {
     console.log(error);
   }
 }
-
-export function GetPlanning(user_id) {
-  fetch('https://werknemer.mobox.nl/functions/app/get_planning.php', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      user_id: user_id,
-    }),
-  })
-    .then((response) => response.json())
-    .then((responseJson) => {
-      console.log(responseJson);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-}

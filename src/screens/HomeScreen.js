@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useReducer, Component} from 'react';
 import {
   View,
   Text,
@@ -11,53 +11,11 @@ import {
   FlatList,
 } from 'react-native';
 import {useTheme} from '@react-navigation/native';
-let EventsData = [
-  {
-    id: 1,
-    start: '15:00',
-    end: '16:00',
-    title: 'Hillegom',
-    klantnaam: 'Lissete van deursen',
-    boxen: '1x 8kuub, 2x 14kuub',
-    boxnmr: 'A180, 24, 25',
-  },
-];
-
-import Events from '../components/event';
-
-const GetPlanning = (user_id) => {
-  fetch('https://werknemer.mobox.nl/functions/app/get_today_planning.php', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      user_id: user_id,
-    }),
-  })
-    .then((response) => response.json())
-    .then((responseJson) => {
-      if (
-        responseJson.actie === 'MELDING' ||
-        responseJson.actie === 'RIJTIJD' ||
-        responseJson.actie === 'melding' ||
-        responseJson.actie === 'rijtijd'
-      ) {
-      } else {
-        EventsData.push(responseJson);
-        //console.log('Geen melding actie');
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
+import Planning_list from '../components/planning_list';
 
 const HomeScreen = ({navigation}) => {
   const {colors, mobox} = useTheme();
   const theme = useTheme();
-  GetPlanning();
 
   const {height} = Dimensions.get('screen');
   const styles = StyleSheet.create({
@@ -109,16 +67,6 @@ const HomeScreen = ({navigation}) => {
     },
   });
 
-  const renderItem = ({item}) => (
-    <Events
-      start={item.start}
-      end={item.end}
-      title={item.title}
-      klantnaam={item.klantnaam}
-      boxen={item.boxen}
-      boxnmr={item.boxnmr}
-    />
-  );
   //End of styles
   return (
     <View style={styles.main}>
@@ -157,12 +105,10 @@ const HomeScreen = ({navigation}) => {
           }>
           Bezorgingen Vandaag
         </Text>
-        <FlatList
-          style={{backgroundColor: mobox.backgroundColor}}
-          keyExtractor={(item) => item.id.toString()}
-          data={EventsData}
-          renderItem={renderItem}
-        />
+
+        <View style={{height: 300, top: 10}}>
+          <Planning_list actie="get_today_planning.php" />
+        </View>
       </View>
     </View>
   );
