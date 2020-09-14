@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
-import {Platform, FlatList} from 'react-native';
+import {
+  Platform,
+  FlatList,
+  Animated,
+  ScrollView,
+  Dimensions,
+} from 'react-native';
 import Events from './event';
-// const instructions = Platform.select({
-//   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-//   android:
-//     'Double tap R on your keyboard to reload,\n' +
-//     'Shake or press menu button for dev menu',
-// });
+import moment from 'moment';
+import {View} from 'react-native-animatable';
+
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
 const renderItem = ({item}) => (
   <Events
@@ -30,7 +34,6 @@ export default class Planning_list extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.user_id);
     fetch('https://werknemer.mobox.nl/functions/app/' + this.props.actie, {
       method: 'POST',
       headers: {
@@ -54,11 +57,13 @@ export default class Planning_list extends Component {
 
   render() {
     return (
-      <FlatList
-        keyExtractor={(item) => item.id.toString()}
-        data={this.state.dataSource}
-        renderItem={renderItem}
-      />
+      <View>
+        <AnimatedFlatList
+          keyExtractor={(item) => item.id.toString()}
+          data={this.state.dataSource}
+          renderItem={renderItem}
+        />
+      </View>
     );
   }
 }
