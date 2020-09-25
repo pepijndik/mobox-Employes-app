@@ -8,9 +8,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './HomeScreen';
 import Planning from './Planning';
 import event from '../components/event';
+
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
 const EventStack = createStackNavigator();
+const EventDetialsStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
@@ -38,16 +40,16 @@ const MainTabScreen = () => (
         ),
       }}
     />
-    <Tab.Screen
-      name="Event"
-      component={EventStackSreen}
+    {/* <Tab.Screen
+      name="eventDetials"
+      component={}
       options={{
         tabBarLabel: 'Klanten',
         tabBarIcon: ({color}) => (
           <Icon name="ios-person" color={color} size={26} />
         ),
       }}
-    />
+    /> */}
   </Tab.Navigator>
 );
 

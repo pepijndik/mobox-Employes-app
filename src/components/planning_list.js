@@ -5,6 +5,7 @@ import {
   Animated,
   ScrollView,
   Dimensions,
+  TouchableOpacity,
 } from 'react-native';
 import Events from './event';
 import moment from 'moment';
@@ -13,16 +14,21 @@ import {View} from 'react-native-animatable';
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
 const renderItem = ({item}) => (
-  <Events
-    start={item.start}
-    end={item.end}
-    title={item.title}
-    klantnaam={item.klantnaam}
-    aantal_8={item.aantal_8}
-    aantal_14={item.aantal_14}
-    boxen={item.boxen}
-    // boxnmr={item.boxnmr}
-  />
+  <TouchableOpacity
+    onPress={() => {
+      console.log('Open modal for detials');
+    }}>
+    <Events
+      start={item.start}
+      end={item.end}
+      title={item.title}
+      klantnaam={item.klantnaam}
+      aantal_8={item.aantal_8}
+      aantal_14={item.aantal_14}
+      boxen={item.boxen}
+      // boxnmr={item.boxnmr}
+    />
+  </TouchableOpacity>
 );
 
 export default class Planning_list extends Component {

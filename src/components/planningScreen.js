@@ -17,7 +17,6 @@ import {ForwardButton, BackButton} from '../components/navButtons';
 import styles from './styles/planning_style';
 import 'moment/locale/nl';
 import {useNavigation} from '@react-navigation/native';
-import BekijkAfpsraak from '../components/BekijkAfspraak';
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
@@ -29,26 +28,29 @@ moment.locale('nl');
 function getCurrentWeekIndex() {
   return moment().startOf('week').diff(START_MOMENT, 'weeks');
 }
-
-const renderItem = ({item}) => (
-  <TouchableOpacity
-    onPress={() => {
-      console.log('Open modal for detials');
-    }}>
-    <Events
-      start={item.start}
-      end={item.end}
-      title={item.title}
-      klantnaam={item.klantnaam}
-      aantal_8={item.aantal_8}
-      aantal_14={item.aantal_14}
-      boxen={item.boxen}
-      // boxnmr={item.boxnmr}
-    />
-  </TouchableOpacity>
-);
+// const renderItem = ({item}) => (
+//   <TouchableOpacity
+//     onPress={() => {
+//       this.toEventDetials();
+//     }}>
+//     <Events
+//       start={item.start}
+//       end={item.end}
+//       title={item.title}
+//       klantnaam={item.klantnaam}
+//       aantal_8={item.aantal_8}
+//       aantal_14={item.aantal_14}
+//       boxen={item.boxen}
+//       // boxnmr={item.boxnmr}
+//     />
+//   </TouchableOpacity>
+// );
 
 export default class PlanningScreen extends Component {
+  // function openModal(item) {
+  //   this.props.navigation.navigate('BekijkAfspraak', {event: item});
+  // }
+
   static navigatorStyle = {
     navBarHidden: true,
     statusBarBlur: true,
@@ -63,6 +65,7 @@ export default class PlanningScreen extends Component {
       markedDate: moment(new Date()).format('YYYY-MM-D'),
     };
   }
+
   _flatList: FlatList<*> | null;
 
   componentDidMount() {
@@ -110,11 +113,12 @@ export default class PlanningScreen extends Component {
       <Picker
         selectedValue={this.state.resource}
         style={{
-          height: 50,
+          height: 30,
           width: 200,
           color: '#fff',
           fontFamily: 'Poppins-Bold',
         }}
+        itemStyle={{height: 44, color: '#fff', fontFamily: 'Poppins-Bold'}}
         onValueChange={(itemValue, itemIndex) =>
           this.setState({resource: itemValue}, () => {
             this.componentDidMount();
@@ -141,6 +145,7 @@ export default class PlanningScreen extends Component {
   );
 
   render() {
+    const {navigation} = this.props;
     const today = this.state.markedDate;
     const day = moment(today).format('dddd');
     const date = moment(today).format('D, MMMM YYYY');
@@ -159,17 +164,31 @@ export default class PlanningScreen extends Component {
         </TouchableWithoutFeedback>
 
         <AnimatedFlatList
+          style={{top: 50}}
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item.id.toString()}
           scrollEventThrottle={1}
-          onScroll={Animated.event(
-            [{nativeEvent: {contentOffset: {x: this.state.scrollAnimX}}}],
-            {useNativeDriver: true},
-          )}
           updateCellsBatchingPeriod={10}
           initialNumToRender={0}
           data={this.state.dataSource}
-          renderItem={renderItem}
+          renderItem={({item}) => (
+            <TouchableOpacity
+              onPress={() => {
+                console.log(this.props);
+                this.props.navigate.navigate('eventDetials');
+              }}>
+              <Events
+                start={item.start}
+                end={item.end}
+                title={item.title}
+                klantnaam={item.klantnaam}
+                aantal_8={item.aantal_8}
+                aantal_14={item.aantal_14}
+                boxen={item.boxen}
+                // boxnmr={item.boxnmr}
+              />
+            </TouchableOpacity>
+          )}
         />
       </View>
     );

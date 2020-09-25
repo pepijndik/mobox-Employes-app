@@ -43,7 +43,7 @@ const event = (props) => {
         <View style={styles.detials}>
           <Text
             style={{
-              top: '2%',
+              top: -1,
               fontSize: 14,
               fontFamily: 'Poppins-Bold',
               color: '#F53D3D',

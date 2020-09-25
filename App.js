@@ -24,9 +24,8 @@ import {
 import {DrawerContent} from './src/screens/DrawerContent';
 
 import MainTabScreen from './src/screens/MainTabScreen';
-import SupportScreen from './src/screens/SupportScreen';
-import SettingsScreen from './src/screens/SettingsScreen';
 
+import EventDetials from './src/components/eventDetials';
 import {AuthContext} from './src/components/context';
 
 import RootStackScreen from './src/screens/RootStackScreen';
@@ -191,8 +190,7 @@ const App = () => {
             <Drawer.Navigator
               drawerContent={(props) => <DrawerContent {...props} />}>
               <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
-              <Drawer.Screen name="SupportScreen" component={SupportScreen} />
-              <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
+              <Drawer.Screen name="eventDetials" component={EventDetials} />
             </Drawer.Navigator>
           ) : (
             <RootStackScreen />

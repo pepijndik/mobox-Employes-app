@@ -87,7 +87,7 @@ export function DrawerContent(props) {
               )}
               label="Mijn Profiel"
               onPress={() => {
-                props.navigation.navigate('Profile');
+                // props.navigation.navigate('Profile');
               }}
             />
             <DrawerItem
@@ -105,7 +105,7 @@ export function DrawerContent(props) {
               )}
               label="Settings"
               onPress={() => {
-                props.navigation.navigate('SettingsScreen');
+                // props.navigation.navigate('SettingsScreen');
               }}
             />
           </Drawer.Section>

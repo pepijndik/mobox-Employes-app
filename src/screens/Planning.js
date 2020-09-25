@@ -17,7 +17,11 @@ const Planning = ({navigation}) => {
     <View>
       <View style={{height: '100%', top: 0}}>
         {/* <Planning_list actie="get_planning.php" user_id="7" /> */}
-        <Planning_screen actie="get_planning.php" user_id="7" />
+        <Planning_screen
+          actie="get_planning.php"
+          user_id="7"
+          navigate={navigation}
+        />
       </View>
     </View>
   );
