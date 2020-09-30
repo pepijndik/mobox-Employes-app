@@ -62,7 +62,7 @@ export default class PlanningScreen extends Component {
     this.state = {
       resource: 'm',
       currentDate: new Date(),
-      markedDate: moment(new Date()).format('YYYY-MM-D'),
+      markedDate: moment(new Date(), 'YYYY-MM-DD'),
     };
   }
 
@@ -78,18 +78,25 @@ export default class PlanningScreen extends Component {
       body: JSON.stringify({
         user_id: this.props.user_id,
         resource: this.state.resource,
-        markedDate: this.state.markedDate,
+        markedDate: moment(this.state.markedDate, 'YYYY-MM-DD').format(
+          'YYYY-MM-DD',
+        ),
       }),
     })
       .then((response) => response.json())
       .then((responseJson) => {
+        //console.log(responseJson);
         this.setState(
           {
             dataSource: responseJson,
           },
-          this.componentDidMount,
+          this.componentDidMount(),
         );
-        //console.log(this.state.resource + ' date: ' + this.state.markedDate);
+        // console.log(
+        //   this.state.resource +
+        //     ' date: ' +
+        //     moment(this.state.markedDate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
+        // );
       })
       .catch((error) => {
         console.error(error);
@@ -102,9 +109,9 @@ export default class PlanningScreen extends Component {
           this.setState(
             {
               resource: this.state.resource,
-              markedDate: moment(this.state.markedDate)
+              markedDate: moment(this.state.markedDate, 'YYYY-MM-D')
                 .subtract(1, 'day')
-                .format('YYYY-MM-D'),
+                .format('YYYY-MM-DD'),
             },
             this.componentDidMount(),
           )
@@ -133,9 +140,9 @@ export default class PlanningScreen extends Component {
           this.setState(
             {
               resource: this.state.resource,
-              markedDate: moment(this.state.markedDate)
+              markedDate: moment(this.state.markedDate, 'YYYY-MM-D')
                 .add(1, 'day')
-                .format('YYYY-MM-D'),
+                .format('YYYY-MM-DD'),
             },
             this.componentDidMount(),
           )
@@ -146,9 +153,9 @@ export default class PlanningScreen extends Component {
 
   render() {
     const {navigation} = this.props;
-    const today = this.state.markedDate;
-    const day = moment(today).format('dddd');
-    const date = moment(today).format('D, MMMM YYYY');
+    const chosenDay = moment(this.state.markedDate).format('YYYY-MM-DD');
+    const day = moment(chosenDay).format('dddd');
+    const date = moment(chosenDay).format('D, MMMM YYYY');
     return (
       <View style={styles.container}>
         <View style={styles.statusbar} />
@@ -174,7 +181,6 @@ export default class PlanningScreen extends Component {
           renderItem={({item}) => (
             <TouchableOpacity
               onPress={() => {
-                console.log(this.props);
                 this.props.navigate.navigate('eventDetials');
               }}>
               <Events
